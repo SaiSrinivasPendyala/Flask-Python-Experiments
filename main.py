@@ -11,7 +11,7 @@ import uuid
 def validate_token():
     path = request.path
     authentication_not_required = {"login": "/api/login", "signup": "/api/signup"}
-    if path != authentication_not_required['login'] or path != authentication_not_required['signup']:
+    if path != authentication_not_required['login'] and path != authentication_not_required['signup']:
         token = request.headers["Authorization"]
         setattr(request, 'token', token)
         if token == '':
